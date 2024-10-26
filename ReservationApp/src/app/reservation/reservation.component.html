@@ -1,0 +1,18 @@
+<!-- reservation.component.html -->
+<h2>Book a Time Slot</h2>
+<form (ngSubmit)="onSubmit()">
+  <label for="area">Choose a Conservation Area:</label>
+  <select [(ngModel)]="selectedArea" name="area" required>
+    <option *ngFor="let area of conservationAreas" [value]="area">{{ area }}</option>
+  </select>
+
+  <label for="time">Choose a Time Slot:</label>
+  <select [(ngModel)]="selectedTime" name="time" required>
+    <option *ngFor="let time of timeSlots" [value]="time">{{ time }}</option>
+  </select>
+
+  <button type="submit">Book</button>
+</form>
+
+<!-- Link to the home page -->
+<p><a routerLink="/">Return to Home</a></p>

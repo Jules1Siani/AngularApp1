@@ -1,0 +1,13 @@
+<!-- confirmation.component.html -->
+<h2>Booking Confirmation</h2>
+
+<ul>
+  <li *ngFor="let slot of slots">
+    Zone: {{ slot.area }}, Time: {{ slot.time }}
+  </li>
+</ul>
+
+<p>Your booking has been confirmed.</p>
+
+<!-- Link to return to the home page -->
+<p><a routerLink="/">Back to Home</a></p>
