@@ -4,7 +4,7 @@ import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes), // Assurez-vous que le routage est fourni ici
+    provideRouter(routes), 
   ],
 };
 

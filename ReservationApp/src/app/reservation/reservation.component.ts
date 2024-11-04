@@ -1,4 +1,4 @@
-// reservation.component.ts
+// src/app/reservation/reservation.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReservationService } from '../reservation.service';
@@ -17,16 +17,20 @@ export class ReservationComponent {
   selectedArea: string | null = null;
   selectedTime: string | null = null;
 
-  // Define the available time slots
   timeSlots: string[] = [
     '09:00 - 12:00',
     '12:00 - 15:00',
     '15:00 - 18:00'
   ];
 
-  constructor(private reservationService: ReservationService, private router: Router) {}
+  constructor(private reservationService: ReservationService, private router: Router) {
+    console.log("ReservationComponent - ReservationService instance ID:", this.reservationService['instanceId']);
+  }
 
   onSubmit() {
+    console.log("Selected Area:", this.selectedArea);
+    console.log("Selected Time:", this.selectedTime);
+
     if (this.selectedArea && this.selectedTime) {
       this.reservationService.addSlot(this.selectedArea, this.selectedTime);
       this.router.navigate(['/confirmation']);

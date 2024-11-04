@@ -1,0 +1,41 @@
+<!-- src/app/admin/admin.component.html -->
+<h2>Admin Dashboard - Reservation Management</h2>
+
+<button (click)="loadReservations()">Refresh Reservations</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Area</th>
+      <th>Time Slot</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.id }}</td>
+      <td>{{ reservation.area }}</td>
+      <td>{{ reservation.time }}</td>
+      <td>
+        <button (click)="editReservation(reservation)">Edit</button>
+        <button (click)="deleteReservation(reservation.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Formulaire pour éditer une réservation sélectionnée -->
+<div *ngIf="selectedReservation">
+  <h3>Edit Reservation</h3>
+  <form (ngSubmit)="saveReservation()">
+    <label for="area">Area:</label>
+    <input type="text" [(ngModel)]="selectedReservation.area" name="area" required>
+
+    <label for="time">Time Slot:</label>
+    <input type="text" [(ngModel)]="selectedReservation.time" name="time" required>
+
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
